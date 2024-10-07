@@ -18,10 +18,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 	<icon>https://sometimes.digital/assets/images/favicon.png</icon>
 	<logo>https://sometimes.digital/assets/images/favicon.png</logo>
-  <title>nika (@nonnullish) - personal website</title>
-  <subtitle>nika (@nonnullish) - personal website</subtitle>
+  <title>sometimes.digital - personal website</title>
+  <subtitle>sometimes.digital - personal website</subtitle>
   <link href="https://sometimes.digital{{ page.url }}" rel="self" />
-  <updated>{{ '' | now }}</updated>
+  <updated>{{ '' | now | dateToRfc3339 }}</updated>
   <id>https://sometimes.digital</id>
   <author>
     <name>nika (@nonnullish)</name>

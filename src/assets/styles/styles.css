@@ -136,7 +136,8 @@ html {
 
     em,
     i {
-      font-family: "Playfair Display";
+      font-family: "Fraunces";
+      font-weight: 390;
       line-height: 1;
     }
 
@@ -189,7 +190,6 @@ html {
         ul,
         ol {
           margin: 0;
-          list-style-type: decimal;
 
           li {
             margin-bottom: 0.5em;
@@ -197,9 +197,15 @@ html {
             padding-left: 0.25em;
             margin-left: -0.25em;
 
+            ul,
+            ol {
+              padding-inline-start: 20px;
+            }
+
             &::marker {
               font-style: italic;
-              font-family: "Playfair Display";
+              font-family: "Fraunces";
+              font-weight: 390;
             }
           }
         }

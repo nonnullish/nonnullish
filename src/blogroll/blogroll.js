@@ -1,9 +1,9 @@
-const dayjs = require('dayjs');
-const Parser = require('rss-parser');
-const parser = new Parser({ timeout: 5000 });
-const blogroll = require('./blogroll.json')
+import Parser from 'rss-parser';
+import blogroll from "./blogroll.json" with { "type": "json" };
 
-const getBlogroll = async () => {
+const parser = new Parser({ timeout: 5000 });
+
+export const getBlogroll = async () => {
   const feeds = [];
 
   for await (const { url } of blogroll) {
@@ -23,7 +23,6 @@ const getBlogroll = async () => {
       post: {
         title: post.title.trim(),
         link: post.link.trim(),
-        readableDate: dayjs(post.isoDate).format('MMMM D, YYYY'),
         isoDate: post.isoDate,
       }
     };
@@ -31,7 +30,5 @@ const getBlogroll = async () => {
     feeds.push(entry);
   }
 
-  return feeds.sort((a, b) => new Date(b.post.isoDate) - new Date(a.post.isoDate));
+  return feeds.sort((a, b) => new Date(a.post.isoDate) - new Date(b.post.isoDate));
 }
-
-module.exports = { getBlogroll };
