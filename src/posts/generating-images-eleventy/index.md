@@ -7,8 +7,6 @@ tags: eleventy
 
 I added the `og:media` image tags yesterday, and the approach seems to work, so I'm going to share it in this post.
 
-![Normally you wouldn't see this banner.](generating-images-eleventy.png)
-
 I am using the [filter functions](https://www.11ty.dev/docs/filters/) and generating the raster images directly inside of the filter with `canvas-text-block` and `node-canvas`, as described [in this article](https://blog.logrocket.com/creating-saving-images-node-canvas/).
 
 First I added the meta tags to my default layout. I called the filter `previews`, and I will be using the `title` variable as the argument.

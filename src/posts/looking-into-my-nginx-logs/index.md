@@ -5,7 +5,7 @@ date: 2024-07-20T20:10:00+02:00
 tags: indieweb
 ---
 
-For the low price of an additional €2.5 to my monthly Internet bill (for the static IP) I can now just drag the `html` files into a network folder on my Raspberry Pi and have them appear online, in the form of this site. And I can see all the logs! These are pretty interesting, because there really are a lot of crawlers out there. I knew there would be *some*, but reading the logs for the first time felt like playing one of those horror games in which everything is okay until you use the flashlight.
+For the low price of an additional €2.5 to my monthly Internet bill (for the static IP) I can now just drag `html` files into a network folder on my Raspberry Pi and have them appear online, in the form of this site. And I can see all the logs! These are pretty interesting, because there really are a lot of crawlers out there. I knew there would be *some*, but reading the logs for the first time felt like playing one of those horror games in which everything is okay until you use the flashlight.
 
 In the last 24 hours (ish), the crawlers have constituted 51.06% of the traffic, and `robots.txt` has been the second most requested file (after the favicon). I used the advice from [darkvisitors.com](https://darkvisitors.com/docs/robots-txt) for the `robots.txt` file, but it feels a bit silly that I have to specifically mention the user agents in the file before I even know that they exist. Who are `AhrefsBot`, `ImagesiftBot`, `SemrushBot`, `SeznamBot`, `CensysInspect`, or `BazQuxReaderMediaProxy`? And it's not like they have to respect my wishes anyway. By analyzing the logs I can see whether they have, but I'm not sure if I care that much. 
 
