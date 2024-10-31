@@ -24,6 +24,10 @@ eleventyExcludeFromCollections: true
         justify-content: center;
         width: min-content;
 
+        span {
+          color: #dadada;
+        }
+
         a {
           text-decoration: none;
 
@@ -39,12 +43,14 @@ eleventyExcludeFromCollections: true
 [About Weeknotes](/posts/about-weeknotes/)
 
 {%- for year in collections.weeknotes reversed -%}
-<p><b>{{ year.year }}</b></p>
+<p><b>{{ year[0] }}</b></p>
 <div class="year">
-{%- for month in year.posts reversed -%}
+{%- for month in year[1] reversed -%}
 <div class="month">
-{% for post in month.posts reversed  %}
-<div class="week"><a href="{{ post.url }}">{{ post.data.week }}</a></div>
+{% for week in month reversed  %}
+<div class="week">
+{% if week.post %}<a href="{{ week.post.url }}">{{ week.week }}</a>{% else %}<span>{{ week.week }}</span>{% endif %}
+</div>
 {% endfor %}
 </div>
 {%- endfor -%}

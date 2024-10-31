@@ -6,6 +6,10 @@ import footnotes from "markdown-it-footnote";
 import anchors from "markdown-it-anchor";
 import { execSync } from "child_process";
 import dotenv from "dotenv";
+import dayjs from "dayjs";
+import isoWeek from "dayjs/plugin/isoWeek.js";
+
+dayjs.extend(isoWeek);
 
 // import { getBlogroll } from "./src/blogroll/blogroll.js";
 
@@ -77,27 +81,32 @@ export default async function (config) {
   addCollection(config, "posts", "src/posts/**/*");
 
   config.addCollection("weeknotes", (handler) => {
-    const weeknotes = handler.getFilteredByGlob("src/weeknotes/**/*");    
-    const years = weeknotes.map((post) => post.date.getFullYear());
-    const months = weeknotes.map((post) => post.date.getMonth());
+    const weeknotes = handler.getFilteredByGlob("src/weeknotes/**/*");
+    const earliest = dayjs(weeknotes.at(0).date).startOf("month");
+    const collection = [];
 
-    const uniqueYears = [...new Set(years)];
-    const uniqueMonths = [...new Set(months)];
+    let current = earliest;
 
-    const byMonth = (group) =>
-      uniqueMonths.reduce((prev, month) => {
-        const posts = group.filter((post) => post.date.getMonth() === month);
+    while (!current.isAfter()) {
+      collection.push({
+        week: current.isoWeek(),
+        month: current.endOf("isoWeek").month(),
+        year: current.year(),
+        post: weeknotes.find(
+          (post) => post.date.getFullYear() === current.year() && post.data.week === current.isoWeek()
+        ),
+      });
 
-        return [...prev, ...(posts.length ? [{ month, posts }] : [])];
-      }, []);
+      current = current.add(1, "week");
+    }
 
-    const byYear = uniqueYears.reduce((prev, year) => {
-      const posts = byMonth(weeknotes.filter((post) => post.date.getFullYear() === year));
+    const byYear = Object.groupBy(collection, ({ year }) => year);
+    const byMonth = Object.entries(byYear).map(([year, entries]) => [
+      year,
+      Object.values(Object.groupBy(entries, ({ month }) => month)),
+    ]);
 
-      return [...prev, ...(posts.length ? [{ year, posts }] : [])];
-    }, []);
-
-    return byYear;
+    return byMonth;
   });
 
   config.addGlobalData("photostream", async () => {
@@ -128,7 +137,10 @@ export default async function (config) {
   // });
 
   config.addFilter("now", (_) => new Date());
-  config.addFilter("readableDate", (date) => `${date.toLocaleString("en", { month: "long", day: "numeric", year: "numeric" })}`);
+  config.addFilter(
+    "readableDate",
+    (date) => `${date.toLocaleString("en", { month: "long", day: "numeric", year: "numeric" })}`
+  );
   config.addFilter("isoDate", (date) => date.toISOString());
 
   config.addShortcode("link", function (url, label) {
