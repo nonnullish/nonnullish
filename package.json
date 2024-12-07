@@ -1,5 +1,5 @@
 {
-  "name": "nonnullish",
+  "name": "sometimes-digital",
   "version": "1.0.0",
   "type": "module",
   "description": "",
@@ -17,14 +17,11 @@
     "@11ty/eleventy-plugin-rss": "^2.0.2",
     "@11ty/eleventy-plugin-syntaxhighlight": "^4.2.0",
     "cross-env": "^7.0.3",
-    "dayjs": "^1.11.13",
     "dotenv": "^16.4.5",
     "flickr-sdk": "^7.0.0-beta.7",
     "markdown-it": "^14.1.0",
     "markdown-it-anchor": "^9.2.0",
     "markdown-it-footnote": "^4.0.0",
-    "pagefind": "^1.1.0",
-    "prismjs": "^1.29.0",
-    "rss-parser": "^3.13.0"
+    "prismjs": "^1.29.0"
   }
 }

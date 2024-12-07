@@ -4,14 +4,7 @@ import { createFlickr } from "flickr-sdk";
 import markdownIt from "markdown-it";
 import footnotes from "markdown-it-footnote";
 import anchors from "markdown-it-anchor";
-import { execSync } from "child_process";
 import dotenv from "dotenv";
-import dayjs from "dayjs";
-import isoWeek from "dayjs/plugin/isoWeek.js";
-
-dayjs.extend(isoWeek);
-
-// import { getBlogroll } from "./src/blogroll/blogroll.js";
 
 dotenv.config();
 
@@ -75,39 +68,7 @@ export default async function (config) {
 
   config.setLibrary("md", markdown);
 
-  addCollection(config, "rss", ["src/weeknotes/**/*", "src/posts/**/*", "src/projects/**/*"]);
-  addCollection(config, "rssPosts", "src/posts/**/*");
-  addCollection(config, "rssWeeknotes", "src/weeknotes/**/*");
-  addCollection(config, "posts", "src/posts/**/*");
-
-  config.addCollection("weeknotes", (handler) => {
-    const weeknotes = handler.getFilteredByGlob("src/weeknotes/**/*");
-    const earliest = dayjs(weeknotes.at(0).date).startOf("month");
-    const collection = [];
-
-    let current = earliest;
-
-    while (!current.isAfter()) {
-      collection.push({
-        week: current.isoWeek(),
-        month: current.endOf("isoWeek").month(),
-        year: current.year(),
-        post: weeknotes.find(
-          (post) => post.date.getFullYear() === current.year() && post.data.week === current.isoWeek()
-        ),
-      });
-
-      current = current.add(1, "week");
-    }
-
-    const byYear = Object.groupBy(collection, ({ year }) => year);
-    const byMonth = Object.entries(byYear).map(([year, entries]) => [
-      year,
-      Object.values(Object.groupBy(entries, ({ month }) => month)),
-    ]);
-
-    return byMonth;
-  });
+  addCollection(config, "rss", ["src/posts/**/*", "src/projects/**/*"]);
 
   config.addGlobalData("photostream", async () => {
     if (process.env.MODE === "development") {
@@ -128,14 +89,6 @@ export default async function (config) {
     }));
   });
 
-  // config.addGlobalData("blogroll", async () => {
-  //   if (process.env.MODE === "development") {
-  //     return [];
-  //   }
-
-  //   return await getBlogroll();
-  // });
-
   config.addFilter("now", (_) => new Date());
   config.addFilter(
     "readableDate",
@@ -148,10 +101,6 @@ export default async function (config) {
     return `<a ${
       isActive ? 'aria-current="page"' : ""
     } href="${url.at(-1) === "/" ? url.slice(0, -1) : url}">${label}</a>`;
-  });
-
-  config.on("eleventy.after", () => {
-    execSync(`npx pagefind --site _site --glob \"**/*.html\"`, { encoding: "utf-8" });
   });
 
   config.setServerOptions({

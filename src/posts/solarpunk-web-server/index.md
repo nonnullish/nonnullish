@@ -11,7 +11,7 @@ I like the shared understanding of both the limitations and the possibilities of
 
 ### solar charger?
 
-I started looking for a solar charger online to buy second-hand and found one listed as "solar charger?" for around €3. I got it mainly because of the intriguing title, but also because it had speakers and a multitude of dongles. I hoped that one of them would fit [the Casio digital diary](/weeknotes/weeknotes-27-2024/), but sadly the thin barrel is too thin and the thick one is too thick.
+I started looking for a solar charger online to buy second-hand and found one listed as "solar charger?" for around €3. I got it mainly because of the intriguing title, but also because it had speakers and a multitude of dongles. I hoped that one of them would fit the Casio digital diary that I've been trying to revive, but sadly the thin barrel is too thin and the thick one is too thick.
 
 <img class="full-width" src="dongles.webp" alt="Dongles: thick barrel to Apple’s 30 pin connector, thick barrel to mini usb, thick barrel to micro usb,  thick barrel to thin barrel"/>
 

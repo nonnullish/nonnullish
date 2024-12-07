@@ -1,20 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-{% if (page.url === '/feed.xml') %}
-<!--______________________________
-   / \                             \.
-  |   |                            |.
-   \_ |  this RSS feed contains    |.
-      |  all the entries on        |.
-      |  sometimes.digital         |.
-      |                            |.
-      |  you can also subscribe    |.
-      |  to /feeds/weeknotes.xml   |.
-      |  or /feeds/posts.xml       |.
-      |   _________________________|___
-      |  /                            /.
-      \_/____________________________/.
--->
-{% endif %}
 <feed xmlns="http://www.w3.org/2005/Atom">
 	<icon>https://sometimes.digital/assets/images/favicon.png</icon>
 	<logo>https://sometimes.digital/assets/images/favicon.png</logo>
@@ -24,8 +8,8 @@
   <updated>{{ '' | now | dateToRfc3339 }}</updated>
   <id>https://sometimes.digital</id>
   <author>
-    <name>nika (@nonnullish)</name>
-    <email>nonnullish@sometimes.digital</email>
+    <name>dominika</name>
+    <email>dominika@sometimes.digital</email>
   </author> 
   {{ content | safe }}
 </feed>

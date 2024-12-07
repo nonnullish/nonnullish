@@ -3,7 +3,7 @@ layout: layouts/article
 ---
 <hgroup>
   {% if date %}<p><time>Last updated: {{ date | readableDate }}</time></p>{% endif %}
-  <h2><a href="{{ url }}">{{ title }}</a></h2>
+  <h3><a href="{{ url }}">{{ title }}</a></h3>
 </hgroup>
 
 {{ content | safe }}

@@ -17,16 +17,6 @@ I often use [Vinted](https://vinted.com/) to find second-hand clothes. I like th
   </g>
 </svg>
 
-But *the glut of fast fashion brands* (did I use the word “*glut*” right?) makes it sort of annoying to search for this kind of stuff. You can filter *by* specific brands, but you can’t filter them *out*. I don’t think this is something that Vinted can ever add because of business concerns, but I can, because I don’t work there and I don’t have any business concerns.
+But *the glut of fast fashion brands* makes it sort of annoying to search for this kind of stuff. You can filter *by* specific brands, but you can’t filter them *out*. I don’t think this is something that Vinted can ever add because of business concerns, but I can, because I don’t work there and I don’t have any business concerns.
 
 I called it **Fast Fashion Begone**. [It's available in the Firefox Add-Ons store](https://addons.mozilla.org/en-GB/firefox/addon/fast-fashion-begone/) and can be loaded into Chrome manually according to [the instructions](https://github.com/nonnullish/fast-fashion-begone/tree/main#chrome). It's not in the Chrome Web Store because I refuse to pay Google the $5 fee.
-
-![4 star review of the no-track extension by Pedro saying 'Does the job, that's all!](does-the-job.webp)
-
-<center>
-
-This is actually a review of a *different* extension I made.[^1] The Vinted one has a five star rating.
-
-</center>
-
-[^1]: That one was supposed to remove site trackers from URLs by removing the search params. I made it around 2019 or 2020. Then I learned that search params actually serve more purposes than just violating the users' privacy and I archived the extension ~~in shame~~.
